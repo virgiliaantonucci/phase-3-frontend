@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import MealDisplay from "./components/MealDisplay.js"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
@@ -9,6 +9,7 @@ import { useState } from 'react';
 function App() {
   const [meals, setMeals] = useState([])
   const [dishes, setDishes] = useState([])
+  const [days, setDays] = useState([])
 
   useEffect(() =>{
     fetch(`http://localhost:9292/meals`)
@@ -20,10 +21,15 @@ function App() {
       .then(res => res.json())
       .then(data => setDishes(data))
   }, [])
+  useEffect(() =>{
+    fetch(`http://localhost:9292/days`)
+      .then(res => res.json())
+      .then(data => setDays(data))
+  }, [])
 
 
   return (
-    <MealDisplay meals={meals}/>
+    <MealDisplay meals={meals} days={days}/>
   )
   
 

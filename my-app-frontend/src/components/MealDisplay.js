@@ -1,13 +1,13 @@
 import React from "react";
-import MealCard from "./MealCard"
+import DayCard from "./DayCard"
 
-function MealDisplay({meals}){
+function MealDisplay({meals, days}){
     return(
         <div className ="ui four column grid">
             <ul className="row">
-                {meals.map((meal) =>(
-                    <MealCard key={meal.id} meal={meal}/>
-                ))}
+                 {days.map((day) =>(
+                    <DayCard key={day.id} meals={meals} day={day}/>
+                ))} 
             </ul>
         </div>
     )
